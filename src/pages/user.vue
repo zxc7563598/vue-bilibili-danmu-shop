@@ -34,22 +34,22 @@
             </van-row>
             <van-grid class="serve-item" :border="false">
                 <van-grid-item class="serve-item-list">
-                    <van-image :src="data.images.pay_log" class="serve-item-list-icon"
+                    <van-image :src="data.icon.pay_log" class="serve-item-list-icon"
                         @click="router.push('/user/consumers')" />
                     <div class="serve-item-title">开通记录</div>
                 </van-grid-item>
                 <van-grid-item class="serve-item-list">
-                    <van-image :src="data.images.convertible" class="serve-item-list-icon"
+                    <van-image :src="data.icon.convertible" class="serve-item-list-icon"
                         @click="router.push('/user/redeeming')" />
                     <div class="serve-item-title">兑换记录</div>
                 </van-grid-item>
                 <van-grid-item class="serve-item-list">
-                    <van-image :src="data.images.address" class="serve-item-list-icon"
+                    <van-image :src="data.icon.address" class="serve-item-list-icon"
                         @click="router.push('/user/address')" />
                     <div class="serve-item-title">收货地址</div>
                 </van-grid-item>
                 <van-grid-item class="serve-item-list">
-                    <van-image :src="data.images.complain" class="serve-item-list-icon"
+                    <van-image :src="data.icon.complain" class="serve-item-list-icon"
                         @click="router.push('/user/complaint')" />
                     <div class="serve-item-title">投诉建议</div>
                 </van-grid-item>
@@ -79,7 +79,7 @@ const active = ref(1);
 const background = ref(null);
 
 const data = ref({
-    images: {
+    icon: {
         pay_log: null,
         convertible: null,
         address: null,
@@ -102,18 +102,6 @@ onMounted(() => {
     } else {
         getConfigData();
         fetchUserData();
-        import('../assets/user/pay_log.png').then((logos) => {
-            this.data.images.pay_log = logos.default;
-        });
-        import('../assets/user/convertible.png').then((logos) => {
-            this.data.images.convertible = logos.default;
-        });
-        import('../assets/user/address.png').then((logos) => {
-            this.data.images.address = logos.default;
-        });
-        import('../assets/user/complain.png').then((logos) => {
-            this.data.images.complain = logos.default;
-        });
     }
 });
 
@@ -148,7 +136,6 @@ const fetchUserData = async () => {
             method: 'post',
             data: { token: token.value },
         });
-
         if (response.code === 0) {
             Object.assign(data.value, response.data);
         } else {

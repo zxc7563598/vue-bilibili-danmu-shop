@@ -80,10 +80,10 @@ const background = ref(null);
 
 const data = ref({
     images: {
-        pay_log: require('@/assets/user/pay_log.png'),
-        convertible: require('@/assets/user/convertible.png'),
-        address: require('@/assets/user/address.png'),
-        complain: require('@/assets/user/complain.png'),
+        pay_log: require('../assets/user/pay_log.png'),
+        convertible: require('../assets/user/convertible.png'),
+        address: require('../assets/user/address.png'),
+        complain: require('../assets/user/complain.png'),
     },
     point: null,
     type: null,

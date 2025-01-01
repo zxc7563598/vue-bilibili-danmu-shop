@@ -34,22 +34,22 @@
             </van-row>
             <van-grid class="serve-item" :border="false">
                 <van-grid-item class="serve-item-list">
-                    <van-image src="../assets/user/pay_log.png" class="serve-item-list-icon"
+                    <van-image :src="data.images.pay_log" class="serve-item-list-icon"
                         @click="router.push('/user/consumers')" />
                     <div class="serve-item-title">开通记录</div>
                 </van-grid-item>
                 <van-grid-item class="serve-item-list">
-                    <van-image src="../assets/user/convertible.png" class="serve-item-list-icon"
+                    <van-image :src="data.images.convertible" class="serve-item-list-icon"
                         @click="router.push('/user/redeeming')" />
                     <div class="serve-item-title">兑换记录</div>
                 </van-grid-item>
                 <van-grid-item class="serve-item-list">
-                    <van-image src="../assets/user/address.png" class="serve-item-list-icon"
+                    <van-image :src="data.images.address" class="serve-item-list-icon"
                         @click="router.push('/user/address')" />
                     <div class="serve-item-title">收货地址</div>
                 </van-grid-item>
                 <van-grid-item class="serve-item-list">
-                    <van-image src="../assets/user/complain.png" class="serve-item-list-icon"
+                    <van-image :src="data.images.complain" class="serve-item-list-icon"
                         @click="router.push('/user/complaint')" />
                     <div class="serve-item-title">投诉建议</div>
                 </van-grid-item>
@@ -79,6 +79,12 @@ const active = ref(1);
 const background = ref(null);
 
 const data = ref({
+    images: {
+        pay_log: require('@/assets/user/pay_log.png'),
+        convertible: require('@/assets/user/convertible.png'),
+        address: require('@/assets/user/address.png'),
+        complain: require('@/assets/user/complain.png'),
+    },
     point: null,
     type: null,
     uid: null,

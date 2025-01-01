@@ -80,10 +80,10 @@ const background = ref(null);
 
 const data = ref({
     images: {
-        pay_log: require('../assets/user/pay_log.png'),
-        convertible: require('../assets/user/convertible.png'),
-        address: require('../assets/user/address.png'),
-        complain: require('../assets/user/complain.png'),
+        pay_log: null,
+        convertible: null,
+        address: null,
+        complain: null
     },
     point: null,
     type: null,
@@ -102,6 +102,18 @@ onMounted(() => {
     } else {
         getConfigData();
         fetchUserData();
+        import('../assets/user/pay_log.png').then((logos) => {
+            this.data.images.pay_log = logos.default;
+        });
+        import('../assets/user/convertible.png').then((logos) => {
+            this.data.images.convertible = logos.default;
+        });
+        import('../assets/user/address.png').then((logos) => {
+            this.data.images.address = logos.default;
+        });
+        import('../assets/user/complain.png').then((logos) => {
+            this.data.images.complain = logos.default;
+        });
     }
 });
 

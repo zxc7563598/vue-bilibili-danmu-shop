@@ -134,7 +134,7 @@ const performLogin = async () => {
 const getConfigData = async () => {
     try {
         const res = await httpRequest({
-            url: config.interface.getLoginBackgroundImage,
+            url: config.interface.getLoginConfig,
             method: 'post',
             data: {},
         });

@@ -8,7 +8,7 @@ export default {
         getMy: '/api/shop/login/get-my',
         logout: '/api/shop/login/logout',
         getThemeColor: '/api/shop/login/get-theme-color',
-        getLoginBackgroundImage: '/api/shop/login/get-background',
+        getLoginConfig: '/api/shop/login/get-config',
         getGoodsDetails: '/api/shop/shop/get-goods-details',
         getConfirm: '/api/shop/shop/get-confirm',
         getProtocolCredit: '/api/shop/user/get-protocol-credit',

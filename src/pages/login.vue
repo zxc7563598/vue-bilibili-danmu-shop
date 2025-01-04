@@ -7,8 +7,8 @@
                 <div class="remark">积分增加可能会有延迟，不要慌喔</div>
                 <input type="text" placeholder="请输入UID" class="input" v-model="uid">
                 <div class="van-hairline--bottom"></div>
-                <van-button color="linear-gradient(to right, var(--theme-color-1), var(--theme-color-2))" size="small" class="submit" block round
-                    @click="getUserVip" :loading="loading" loading-text="查询中...">
+                <van-button color="linear-gradient(to right, var(--theme-color-1), var(--theme-color-2))" size="small"
+                    class="submit" block round @click="getUserVip" :loading="loading" loading-text="查询中...">
                     登录
                 </van-button>
             </van-cell-group>
@@ -20,8 +20,8 @@
                 <div class="remark">密码还记得吗记得吗记得吗，不记得可以去找主播变更密码喔</div>
                 <input type="text" placeholder="请输入密码" class="input" v-model="password">
                 <div class="van-hairline--bottom"></div>
-                <van-button color="linear-gradient(to right, var(--theme-color-1), var(--theme-color-2))" size="small" class="submit" block round
-                    @click="performLogin" :loading="loading" loading-text="查询中...">
+                <van-button color="linear-gradient(to right, var(--theme-color-1), var(--theme-color-2))" size="small"
+                    class="submit" block round @click="performLogin" :loading="loading" loading-text="查询中...">
                     登录
                 </van-button>
             </van-cell-group>
@@ -33,8 +33,8 @@
                 <div class="remark">可以给自己设置一个初始密码，不要忘记喔</div>
                 <input type="text" placeholder="请输入密码" class="input" v-model="password">
                 <div class="van-hairline--bottom"></div>
-                <van-button color="linear-gradient(to right, var(--theme-color-1), var(--theme-color-2))" size="small" class="submit" block round
-                    @click="performLogin" :loading="loading" loading-text="查询中...">
+                <van-button color="linear-gradient(to right, var(--theme-color-1), var(--theme-color-2))" size="small"
+                    class="submit" block round @click="performLogin" :loading="loading" loading-text="查询中...">
                     注册
                 </van-button>
             </van-cell-group>
@@ -61,6 +61,7 @@ const visible = ref({
 const loading = ref(false);
 const uid = ref('');
 const password = ref('');
+const passwordShow = ref(true);
 
 // 切换页面的显示状态
 const switchPages = (type) => {
@@ -90,7 +91,12 @@ const getUserVip = async () => {
         });
         setLoading(false);
         if (res.code === 0) {
-            switchPages(res.data.exist ? 'password' : 'register');
+            if (passwordShow) {
+                switchPages(res.data.exist ? 'password' : 'register');
+            } else {
+                password.value = 'null';
+                performLogin();
+            }
         } else {
             showToast(res.message || '操作失败');
         }
@@ -141,6 +147,7 @@ const getConfigData = async () => {
         if (res.code == 0) {
             const box = document.querySelector('.login-container');
             box.style.backgroundImage = "url('" + res.data.background + "')"; // 设置背景图片
+            passwordShow = res.data.password
         } else {
             showToast(res.message || '获取失败');
         }

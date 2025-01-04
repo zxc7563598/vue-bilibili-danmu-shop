@@ -91,7 +91,7 @@ const getUserVip = async () => {
         });
         setLoading(false);
         if (res.code === 0) {
-            if (passwordShow) {
+            if (passwordShow.value) {
                 switchPages(res.data.exist ? 'password' : 'register');
             } else {
                 password.value = 'null';
@@ -147,7 +147,7 @@ const getConfigData = async () => {
         if (res.code == 0) {
             const box = document.querySelector('.login-container');
             box.style.backgroundImage = "url('" + res.data.background + "')"; // 设置背景图片
-            passwordShow = res.data.password
+            passwordShow.value = res.data.password
         } else {
             showToast(res.message || '获取失败');
         }

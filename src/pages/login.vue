@@ -5,7 +5,7 @@
                 <div class="title">我来啦</div>
                 <div class="remark">uid可以从「我的」「设置」「个人资料」中查看</div>
                 <div class="remark">积分增加可能会有延迟，不要慌喔</div>
-                <input type="text" placeholder="请输入UID" class="input" v-model="uid">
+                <input type="number" placeholder="请输入UID" class="input" v-model="uid">
                 <div class="van-hairline--bottom"></div>
                 <van-button color="linear-gradient(to right, var(--theme-color-1), var(--theme-color-2))" size="small"
                     class="submit" block round @click="getUserVip" :loading="loading" loading-text="查询中...">

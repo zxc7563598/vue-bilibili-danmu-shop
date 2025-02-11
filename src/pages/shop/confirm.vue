@@ -24,6 +24,12 @@
             </div>
         </van-cell-group>
     </div>
+    <div v-if="data.product.mail">
+        <van-cell-group inset class="shipping-address">
+            <p style="padding: 1rem;color: rgb(157 157 157);font-size: .8rem;">您购买的商品将通过邮件发送，请填写您的邮箱地址</p>
+            <van-field label-width="4rem" v-model="data.product.email" label="电子邮箱" placeholder="请输入邮箱地址" />
+        </van-cell-group>
+    </div>
     <van-cell-group inset class="commodity">
         <div class="commodity-info">
             <img class="commodity-info-icon" :src="data.product.cover">
@@ -42,7 +48,8 @@
     </van-cell-group>
     <div class="protocols" @click="router.push(`/protocol/credit/${route.params.id}`)">
         <van-icon name="success" :class="data.product.protocols ? 'icon-success' : 'icon'" />
-        <div class="protocols-text">我已阅读并同意签署<a href="javascript:;" class="protocols-text-href">《{{data.protocols_title}}》</a></div>
+        <div class="protocols-text">我已阅读并同意签署<a href="javascript:;" class="protocols-text-href">《{{ data.protocols_title
+                }}》</a></div>
     </div>
     <div class="buy-body">
         <van-button color="linear-gradient(to right, var(--theme-color-1), var(--theme-color-2))" block @click="buying">
@@ -113,6 +120,11 @@ const buying = () => {
         showToast('请选择您的地址');
         return;
     }
+    if (data.value.product.mail && !data.value.product.email) {
+        showToast('请填写您的邮箱地址');
+        return;
+    }
+    cookie.set(`shop-email-${route.params.id}`, data.value.product.email);
     router.push(`/protocol/credit/${route.params.id}/1`)
 }
 </script>

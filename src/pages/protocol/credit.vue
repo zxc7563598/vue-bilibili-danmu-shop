@@ -110,11 +110,12 @@ const signatureSubmit = async (event) => {
 // 确认订单
 const confirme = async () => {
     try {
+        let email = cookie.get(`shop-email-${route.params.id}`) || '';
         let sub_id = cookie.get(`shop-goods-${route.params.id}`) || '';
         const response = await httpRequest({
             url: config.interface.confirmProduct,
             method: 'post',
-            data: { token: token.value, goods_id: route.params.id, sub_id: sub_id },
+            data: { token: token.value, goods_id: route.params.id, sub_id: sub_id, email: email },
         });
         if (response.code === 0) {
             let success = response.data.risk ? 1 : 0;

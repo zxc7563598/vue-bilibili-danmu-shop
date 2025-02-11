@@ -18,7 +18,7 @@
                     <van-col span="4" class="redemption-sort" :class="index < 3 ? 'level' + index : ''">{{ index + 1
                         }}</van-col>
                     <van-col span="14" class="redemption-name">{{ item.name }}</van-col>
-                    <van-col span="6" class="redemption-number">上线 {{ item.count }} 次</van-col>
+                    <van-col span="6" class="redemption-number">上贡 {{ item.count }} 次</van-col>
                 </van-row>
             </van-cell-group>
         </div>

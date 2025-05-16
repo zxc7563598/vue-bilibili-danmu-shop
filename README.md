@@ -12,10 +12,10 @@
 
 ## 预览
 
-| <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo01.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo02.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo03.png"> |
+| <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/main/src/assets/preview/demo01.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/main/src/assets/preview/demo02.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/main/src/assets/preview/demo03.png"> |
 | --- | --- | --- |
-| <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo04.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo05.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo06.png"> |
-| <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo07.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo08.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo09.png"> |
+| <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/main/src/assets/preview/demo04.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/main/src/assets/preview/demo05.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/main/src/assets/preview/demo06.png"> |
+| <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/main/src/assets/preview/demo07.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/main/src/assets/preview/demo08.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/main/src/assets/preview/demo09.png"> |
 
 
 

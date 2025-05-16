@@ -6,9 +6,18 @@
 
 ## 项目特点
 
-* **前后端分离架构**：前端基于 Vue 3 构建，后端使用 PHP 提供 RESTful API 接口。
-* **实时积分管理**：用户在直播间互动（如发送弹幕、开通大航海）可获得积分。
-* **积分商城兑换**：用户可使用积分兑换商城内的虚拟或实物商品。
+- **前后端分离架构**：前端基于 Vue 3 构建，后端使用 PHP 提供 RESTful API 接口。
+- **实时积分管理**：用户在直播间互动（如发送弹幕、开通大航海）可获得积分。
+- **积分商城兑换**：用户可使用积分兑换商城内的虚拟或实物商品。
+
+## 预览
+
+| <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo01.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo02.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo03.png"> |
+| --- | --- | --- |
+| <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo04.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo05.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo06.png"> |
+| <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo07.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo08.png"> | <img src="https://raw.githubusercontent.com/zxc7563598/vue-bilibili-danmu-shop/src/assets/preview/demo09.png"> |
+
+
 
 ## 安装与运行
 

@@ -1,5 +1,7 @@
 # vue-bilibili-danmu-shop
 
+⚠️ 本项目仅供学习交流使用，禁止用于商业或非法用途。
+
 ​`vue-bilibili-danmu-shop`​ 是一个基于 Vue 3 和 Vite 构建的前端项目，用于配合 [php-bilibili-danmu](https://github.com/zxc7563598/php-bilibili-danmu) 项目的积分商城模块。该前端页面为用户提供商品浏览与积分兑换等交互功能，依赖后端提供的 API 实现积分管理和订单处理等服务。
 
 > 如果你选择通过 Docker 一键部署整套系统，则无需关注该前端仓库，部署过程将自动完成。

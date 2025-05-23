@@ -41,7 +41,7 @@ service.interceptors.request.use(
 // 添加响应拦截器
 service.interceptors.response.use(
 	function (response) {
-		switch (response.data.code) {
+		switch (String(response.data.code)) {
 			case '900006':
 			case '800004':
 				window.location.href = '/login'

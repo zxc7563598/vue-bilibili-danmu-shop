@@ -5,6 +5,7 @@ export default {
         getUserVip: "/api/shop/login/get-user-vip",
         performLogin: "/api/shop/login/perform-login",
         getGoods: "/api/shop/shop/get-goods",
+        getGoodsV2: "/api/shop/shop/get-goods-v2",
         getMy: '/api/shop/login/get-my',
         logout: '/api/shop/login/logout',
         getThemeColor: '/api/shop/login/get-theme-color',

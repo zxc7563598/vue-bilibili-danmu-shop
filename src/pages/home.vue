@@ -95,6 +95,7 @@ onMounted(() => {
     if (!token.value) {
         router.push('/login');
     }
+    onLoadMore()
 });
 
 

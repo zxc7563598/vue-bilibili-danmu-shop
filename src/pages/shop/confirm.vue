@@ -39,7 +39,8 @@
             </div>
         </div>
         <div class="commodity-price">
-            <div class="price-info"><span class="price-symbol">积分&nbsp;</span>{{ data.product.amount }}</div>
+            <div class="price-info"><span class="price-symbol">{{ (data.product.amount_type ? data.product.amount_type :
+                    '积分')}}&nbsp;</span>{{ data.product.amount }}</div>
         </div>
         <div class="commodity-list" v-for="(item, index) in data.product.details" :key="index">
             <div class="commodity-list-title">{{ item.key }}</div>
@@ -49,7 +50,7 @@
     <div class="protocols" @click="router.push(`/protocol/credit/${route.params.id}`)">
         <van-icon name="success" :class="data.product.protocols ? 'icon-success' : 'icon'" />
         <div class="protocols-text">我已阅读并同意签署<a href="javascript:;" class="protocols-text-href">《{{ data.protocols_title
-                }}》</a></div>
+        }}》</a></div>
     </div>
     <div class="buy-body">
         <van-button color="linear-gradient(to right, var(--theme-color-1), var(--theme-color-2))" block @click="buying">

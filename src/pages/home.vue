@@ -15,7 +15,8 @@
                         <van-text-ellipsis position="middle" :content="item.name" />
                     </div>
                     <div class="price">
-                        <van-text-ellipsis position="middle" :content="item.amount + '积分'" />
+                        <van-text-ellipsis position="middle"
+                            :content="item.amount + (item.amount_type ? item.amount_type : '积分')" />
                     </div>
                 </div>
             </van-col>
@@ -52,40 +53,40 @@ const pageSize = 10;
 
 // 加载更多数据
 const onLoadMore = async () => {
-  loading.value = true;
-  try {
-    const res = await httpRequest({
-      url: config.interface.getGoodsV2,
-      method: 'post',
-      data: {
-        token: token.value,
-        pageNo: pageNo.value,
-        pageSize
-      }
-    });
+    loading.value = true;
+    try {
+        const res = await httpRequest({
+            url: config.interface.getGoodsV2,
+            method: 'post',
+            data: {
+                token: token.value,
+                pageNo: pageNo.value,
+                pageSize
+            }
+        });
 
-    if (res.code === 0) {
-      const newItems = res.data.pageData.map(item => ({
-        ...item,
-        loading: true
-      }));
+        if (res.code === 0) {
+            const newItems = res.data.pageData.map(item => ({
+                ...item,
+                loading: true
+            }));
 
-      data.value.push(...newItems);
-      pageNo.value++;
+            data.value.push(...newItems);
+            pageNo.value++;
 
-      if (newItems.length < pageSize) {
-        finished.value = true; // 数据不足一页，认为已加载完
-      }
-    } else {
-      showToast(res.message || '加载失败');
-      finished.value = true;
+            if (newItems.length < pageSize) {
+                finished.value = true; // 数据不足一页，认为已加载完
+            }
+        } else {
+            showToast(res.message || '加载失败');
+            finished.value = true;
+        }
+    } catch (e) {
+        showToast('加载失败');
+        finished.value = true;
+    } finally {
+        loading.value = false;
     }
-  } catch (e) {
-    showToast('加载失败');
-    finished.value = true;
-  } finally {
-    loading.value = false;
-  }
 };
 
 

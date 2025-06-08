@@ -14,7 +14,7 @@
                         <div class="info-content">
                             <div class="info-content-title">
                                 <div class="title">{{ item.goods_name }}</div>
-                                <div class="price"><span class="price-symbol">积分:</span> {{ item.point }}</div>
+                                <div class="price"><span class="price-symbol">{{ (item.amount_type ? item.amount_type : '积分') }}:</span> {{ item.point }}</div>
                             </div>
                             <div class="info-content-specification"> 规格：{{ item.commodity_type }} </div>
                             <div class="info-content-number"><span round="" class="price-symbol">x</span>1 </div>

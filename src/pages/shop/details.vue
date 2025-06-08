@@ -12,7 +12,7 @@
     </div>
     <div class="commodity-price">
         <span class="price-symbol">🌟</span> {{ productData.amount }}
-        <span class="price-symbol">积分</span>
+        <span class="price-symbol">{{ (productData.amount_type ? productData.amount_type : '积分') }}</span>
         <span class="price-volume">已售{{ productData.sale }}</span>
     </div>
     <van-tabs v-model:active="tabs" color="var(--theme-color-1)">
@@ -36,9 +36,11 @@
             <div class="commodity-info">
                 <img :src="productData.cover_image" class="info-icon">
                 <div class="info-content">
-                    <div class="info-content-price"><span class="price-symbol">🌟</span>{{ productData.amount }}积分
+                    <div class="info-content-price"><span class="price-symbol">🌟</span>{{ productData.amount
+                    }}{{ (productData.amount_type ? productData.amount_type : '积分') }}
                     </div>
-                    <div class="info-content-type"> 已选择：积分兑换</div>
+                    <div class="info-content-type"> 已选择：{{ (productData.amount_type ? productData.amount_type : '积分') }}兑换
+                    </div>
                 </div>
             </div>
             <van-divider hairline />
@@ -51,7 +53,8 @@
             </div>
             <div class="payment-method">
                 <div class="payment-method-title">付款方式</div>
-                <van-tag type="default" size="large" color="var(--theme-color-1)">积分兑换</van-tag>
+                <van-tag type="default" size="large" color="var(--theme-color-1)">{{ (productData.amount_type ?
+                    productData.amount_type : '积分')}}兑换</van-tag>
             </div>
             <van-button type="default" size="normal"
                 style="color: white; background: linear-gradient(to right, var(--theme-color-1), var(--theme-color-2)); border: 0px;"
@@ -76,6 +79,7 @@ const show = ref(false);
 
 const productData = ref({
     amount: null,
+    amount_type: null,
     carousel_images: [],
     commodity_type: [],
     cover_image: '',

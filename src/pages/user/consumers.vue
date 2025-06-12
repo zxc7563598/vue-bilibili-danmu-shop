@@ -10,7 +10,7 @@
                 <div class="uname">{{ item.name }}</div>
                 <div class="time">{{ item.days }}</div>
             </div>
-            <div class="point">+{{ item.point }}{{ item.amount_type ?? item.amount_type : '积分' }}</div>
+            <div class="point">+{{ item.point }}{{ item.amount_type ? item.amount_type : '积分' }}</div>
         </van-cell-group>
     </div>
 </template>

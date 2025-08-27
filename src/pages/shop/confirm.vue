@@ -40,17 +40,17 @@
         </div>
         <div class="commodity-price">
             <div class="price-info"><span class="price-symbol">{{ (data.product.amount_type ? data.product.amount_type :
-                    '积分')}}&nbsp;</span>{{ data.product.amount }}</div>
+                '积分') }}&nbsp;</span>{{ data.product.amount }}</div>
         </div>
         <div class="commodity-list" v-for="(item, index) in data.product.details" :key="index">
             <div class="commodity-list-title">{{ item.key }}</div>
             <div class="commodity-list-content">{{ item.value }}</div>
         </div>
     </van-cell-group>
-    <div class="protocols" @click="router.push(`/protocol/credit/${route.params.id}`)">
+    <div class="protocols" @click="router.push(`/protocol/credit/${route.params.id}`)" v-if="data.protocols_enable">
         <van-icon name="success" :class="data.product.protocols ? 'icon-success' : 'icon'" />
         <div class="protocols-text">我已阅读并同意签署<a href="javascript:;" class="protocols-text-href">《{{ data.protocols_title
-        }}》</a></div>
+                }}》</a></div>
     </div>
     <div class="buy-body">
         <van-button color="linear-gradient(to right, var(--theme-color-1), var(--theme-color-2))" block @click="buying">
@@ -75,6 +75,7 @@ const token = ref(cookie.get('shop-token') || '');
 const data = ref({
     user_address: {},
     product: {},
+    protocols_enable: false,
     protocols_title: ''
 });
 
@@ -116,7 +117,7 @@ const fetchProductDetails = async () => {
 };
 
 // 下单
-const buying = () => {
+const buying = async () => {
     if (data.value.product.address && !data.value.user_address) {
         showToast('请选择您的地址');
         return;
@@ -126,7 +127,28 @@ const buying = () => {
         return;
     }
     cookie.set(`shop-email-${route.params.id}`, data.value.product.email);
-    router.push(`/protocol/credit/${route.params.id}/1`)
+    if (data.value.protocols_enable) {
+        router.push(`/protocol/credit/${route.params.id}/1`)
+    } else {
+        try {
+            let email = cookie.get(`shop-email-${route.params.id}`) || '';
+            let sub_id = cookie.get(`shop-goods-${route.params.id}`) || '';
+            const response = await httpRequest({
+                url: config.interface.confirmProduct,
+                method: 'post',
+                data: { token: token.value, goods_id: route.params.id, sub_id: sub_id, email: email },
+            });
+            if (response.code === 0) {
+                let success = response.data.risk ? 1 : 0;
+                let type = response.data.type;
+                router.push(`/shop/loading/${success}/${type}`);
+            } else {
+                showToast(response.message || '下单失败');
+            }
+        } catch (error) {
+            showToast('下单失败，请稍后重试');
+        }
+    }
 }
 </script>
 

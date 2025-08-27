@@ -75,7 +75,7 @@ const token = ref(cookie.get('shop-token') || '');
 const data = ref({
     user_address: {},
     product: {},
-    protocols_enable: false,
+    protocols_enable: true,
     protocols_title: ''
 });
 

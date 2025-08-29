@@ -1,6 +1,18 @@
 import axios from 'axios'
-import CryptoJS from 'crypto-js'
 import config from './config'
+import { encryptRequest } from 'hejunjie-encrypted-request'
+
+let cachedPublicKey = null
+export async function loadPublicKey() {
+	if (cachedPublicKey)
+		return cachedPublicKey
+	const res = await fetch('/public_key.pem')
+	if (!res.ok)
+		throw new Error('Failed to load public key')
+	const key = await res.text()
+	cachedPublicKey = key
+	return key
+}
 
 const service = axios.create({
 	baseURL: config.baseUrl,
@@ -12,25 +24,15 @@ const service = axios.create({
 
 // 添加请求拦截器
 service.interceptors.request.use(
-	function (config) {
+	async function (config) {
 		let token = config.data.token;
-		let timestamp = Math.floor(Date.now() / 1000);
-		let en_data = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(JSON.stringify(config.data)),
-			CryptoJS.enc.Utf8.parse(import.meta.env.VITE_API_AES_KEY), {
-			iv: CryptoJS.enc.Utf8.parse(import.meta.env.VITE_API_AES_IV),
-			mode: CryptoJS.mode.CBC, // 使用 CBC 模式
-			padding: CryptoJS.pad.Pkcs7 // 使用 PKCS#7 填充
-		}).toString();
-		let sign = CryptoJS.MD5(import.meta.env.VITE_API_KEY + timestamp).toString(CryptoJS.enc.Hex);
-		config.data = {
-			"en_data": en_data,
-			"timestamp": timestamp,
-			"sign": sign,
-			"lang": 'zh_cn'
-		}
+		config.data = encryptRequest(config.data, {
+			rsaPubKey: await loadPublicKey(),
+		});
 		if (token) {
 			config.data.token = token;
 		}
+		config.data.lang = 'zh_cn';
 		return config
 	},
 	function (error) {
